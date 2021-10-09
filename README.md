@@ -61,9 +61,10 @@ sfdx force:source --help
 1. In your **PackagingORG** setup your namespace in _Package Manager_, once verified your unique namespace, select the package to be managed
 2. Setup your **DevhubORG**  by login to your destinated **DevhubORG** and then in the setup>Dev Hub> switch to _"Enabled"_ these options: **Enable Dev Hub** & **Enable Unlocked Packages and Second-Generation Managed Packages**
 3. Previous step allows your **DevhubORG** to have access to next tab "Namespace Register" where you can add with point and click the previously created namespace, login to your **PackagingORG** will be needed
-4. On your CLI setup the **DevhubORG**, login first `sfdx auth:web:login`
-5. CLI `sfdx config:set defaultdevhubusername=devhubAlias`
-6. Go back to your **PackagingORG** go to _Package Manager_ and deploy now the Managed package by uploading once again and this will generate another link
+4. Double check that you have added the namespace key in the sfdx-project.json file
+5. On your CLI setup the **DevhubORG**, login first `sfdx auth:web:login`
+6. CLI `sfdx config:set defaultdevhubusername=devhubAlias`
+7. Go back to your **PackagingORG** go to _Package Manager_ and deploy now the Managed package by uploading once again and this will generate another link
 
 ### Create 2GP Managed Package
 0. Create a scratch org for test only, not completely mandatory for this deployment but is a needed concept for 2GP `sfdx force:org:create --definitionfile config/project-scratch-def.json --durationdays 30 --setalias MyScratchOrg -v DevHub`
