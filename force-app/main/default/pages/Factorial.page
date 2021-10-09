@@ -1,0 +1,86 @@
+<apex:page lightningStylesheets="true" title="Factorial" controller="FactorialController" sidebar="false">
+    <style>
+        .flex-form {
+        	display: flex;
+        	justify-content: center;
+        	align-items: center;
+        	widht: 100%;
+        	padding: .5rem;
+        }
+        
+    	.sqr {
+        	display: flex;
+        	flex-direction: column;
+        	justify-content: center;
+        	align-items: center;
+        	width: 280px;
+        	height: 120px;
+        	margin: 1rem auto;
+        	border: solid 1px rgba(55,55,55, .5);
+        	border-radius: 6px;
+        	box-shadow: inset -10px -10px 15px rgba(55,55,55, .5), inset 10px 10px 15px rgba(55,55,55, .5);
+        }
+        
+        .result {
+        	display: block;
+        	padding: .3rem .5rem;
+        	font-size: 2rem;
+        	font-family: monospace;
+        	color: whitesmoke;
+        	border-radius: 16px;
+        	text-shadow: 1px 0 0 #222, -1px 0 0 #222, 0 1px 0 #222, 0 -1px 0 #222, 1px 1px #222, -1px -1px 0 #222, 1px -1px 0 #222, -1px 1px 0 #222;
+        }
+        
+        .input-class {
+        	width: 100px !important;
+        	height: 50px !important;
+        	texxt-align: center !important;
+        	font-size: 1rem !important;
+        	font-family: monospace !important;
+        	outline: none !important;
+        	border: solid 1px lightgray !important;
+        	border-radius: 10% !important;
+        }.input-class:focus {
+        	border: solid 1px gray !important;
+        }
+        
+        .button {
+        	display: block !important;
+        	margin-left: .6rem !important;
+        	padding: .5rem !important;
+        	font-size: 1.2rem !important;
+        	font-family: monospace !important;
+        	font-weight: bold !important;
+        	border: solid 2px firebrick !important;
+        	color: firebrick !important;
+        	border-radius: 7px !important;
+        	cursor: pointer !important;
+        	transition: all .2s ease-in !important;
+        }.button:hover {
+			background-color: firebrick !important;
+        	color: snow !important;
+		}
+    </style>
+    <apex:pageBlock title="Let's found some factors">
+        <apex:outputPanel id="factorialResult" style="background: linear-gradient(rgb({!color}) 0%, rgb({!color2}) 100%)" styleClass="sqr">
+            <apex:outputText />
+            <apex:actionStatus startText="loading..." id="myStatus" startStyleClass="result">
+                <apex:facet name="stop">
+                    <div class="result">
+                        {!output}
+                        {!overflowOutput}
+                    </div>
+                </apex:facet>
+            </apex:actionStatus>
+        </apex:outputPanel>
+        
+        
+        <apex:form styleClass="flex-form">
+            <apex:inputText styleClass="input-class" value="{!input}" />
+            <apex:outputPanel onclick="factorialResult()" styleClass="button">
+                Found Factorial
+            </apex:outputPanel>
+            <apex:actionFunction name="factorialResult" action="{!factorialResult}" reRender="factorialResult" status="myStatus"/>
+        </apex:form>
+    </apex:pageBlock>
+</apex:page>
